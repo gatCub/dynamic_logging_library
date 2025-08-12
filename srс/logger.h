@@ -34,6 +34,7 @@ struct Logger
 private:
 
     std::string logLevelToStr(LogLevel) const;
+    std::string getCurrentTime() const;
 
     std::ofstream logFile_;
     LogLevel currentLevel_;

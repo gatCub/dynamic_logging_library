@@ -1,4 +1,8 @@
 #include "logger.h"
+#include <stdexcept>
+#include <chrono>
+#include <iomanip>
+
 
 Logger::Logger(const std::string& filename, LogLevel defaultLogLevel): currentLevel_(defaultLogLevel) {
     logFile_.open(filename, std::ios::app);
@@ -15,7 +19,7 @@ bool Logger::log(std::string_view message, LogLevel level) {
 
     if (!logFile_.is_open()) return false;
 
-    logFile_ << "[" << "ВРЕМЯ" << "]\t" 
+    logFile_ << "[" << getCurrentTime() << "]\t" 
              << "[" << logLevelToStr(level) << "]\t";
     logFile_.write(message.data(), message.size());
     logFile_ << std::endl;
@@ -43,3 +47,18 @@ std::string Logger::logLevelToStr(LogLevel level) const {
     }
 }
 
+std::string Logger::getCurrentTime() const {
+    auto in_time { std::chrono::system_clock::to_time_t(std::chrono::system_clock::now()) };
+    
+    std::tm buf;
+    #ifdef _WIN32
+        localtime_s(&buf, &in_time);
+    #else
+        localtime_r(&in_time, &buf);
+    #endif
+
+    std::ostringstream ss;
+    ss << std::put_time(&buf, "%Y-%M-%D %H:%M:%S");
+
+    return ss.str();
+}
