@@ -16,8 +16,8 @@ Logger::~Logger() {
 
 bool Logger::log(std::string_view message, LogLevel level) {
     if (static_cast<int>(level) < static_cast<int>(currentLevel_.load(std::memory_order_acquire))) return false;
-
     std::lock_guard<std::mutex> lock {logMutex_};
+    if (static_cast<int>(level) < static_cast<int>(currentLevel_.load(std::memory_order_relaxed))) return false;
 
     if (!logFile_.is_open()) return false;
 
