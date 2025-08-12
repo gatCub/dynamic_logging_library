@@ -1,7 +1,9 @@
 cmake_minimum_required(VERSION 3.10.0)
-project(logging_library VERSION 0.1.0 LANGUAGES C CXX)
+project(logging_library VERSION 0.1.0 LANGUAGES CXX)
 
-add_library(logging_library SHARED scr/logger.cpp)
+set(CMAKE_CXX_STANDARD 17)
+
+add_library(logging_library SHARED srс/logger.cpp)
 
 include(CTest)
 enable_testing()
