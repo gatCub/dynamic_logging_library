@@ -3,7 +3,7 @@ project(logging_library VERSION 0.1.0 LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_library(logging_library SHARED srс/logger.cpp)
+add_library(logging_library SHARED src/logger.cpp)
 
 include(CTest)
 enable_testing()
