@@ -25,7 +25,8 @@ bool Logger::log(std::string_view message, LogLevel level) {
              << "[" << logLevelToStr(level) << "]\t";
     logFile_.write(message.data(), message.size());
     logFile_ << std::endl;
-    
+
+    return true;
 }
 
 void Logger::setLogLevel(LogLevel new_level){
