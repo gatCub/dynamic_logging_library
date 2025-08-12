@@ -6,6 +6,8 @@
 #include <string>
 #include <string_view>
 #include <fstream>
+#include <mutex>
+#include <atomic>
 
 /*Уровни логирования: 
     Info - Информационное сообщение.
@@ -37,7 +39,8 @@ private:
     std::string getCurrentTime() const;
 
     std::ofstream logFile_;
-    LogLevel currentLevel_;
+    std::atomic<LogLevel> currentLevel_;
+    mutable std::mutex logMutex_;
 
 };
 

@@ -15,7 +15,9 @@ Logger::~Logger() {
 }
 
 bool Logger::log(std::string_view message, LogLevel level) {
-    if (static_cast<int>(level) < static_cast<int>(currentLevel_)) return false;
+    if (static_cast<int>(level) < static_cast<int>(currentLevel_.load(std::memory_order_acquire))) return false;
+
+    std::lock_guard<std::mutex> lock {logMutex_};
 
     if (!logFile_.is_open()) return false;
 
@@ -27,11 +29,11 @@ bool Logger::log(std::string_view message, LogLevel level) {
 }
 
 void Logger::setLogLevel(LogLevel new_level){
-    currentLevel_ = new_level;
+    currentLevel_.store(new_level, std::memory_order_release);
 }
 
 LogLevel Logger::getLogLevel()  const{
-    return currentLevel_;
+    return currentLevel_.load(std::memory_order_acquire);
 }
 
 std::string Logger::logLevelToStr(LogLevel level) const {
