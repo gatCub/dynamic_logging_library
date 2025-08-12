@@ -4,6 +4,7 @@
 #pragma once
 
 #include <string>
+#include <string_view>
 #include <fstream>
 
 /*Уровни логирования: 
@@ -18,16 +19,22 @@ enum class LogLevel {
 
 };
 
-struct logger
-{
-    logger(const std::string&, LogLevel);
-    ~logger();
+// Из условий задачи мы ограничиваемся 3 уровнями поэтому я выбрал перечисления и не использовал полиморфизм во время выполнения для получения уровней логирования.  
 
-    void log(const std::string&, LogLevel = LogLevel::Info);
+struct Logger
+{
+    Logger(const std::string&, LogLevel);
+    ~Logger();
+
+    bool log(std::string_view, LogLevel = LogLevel::Info);
     void setLogLevel(LogLevel);
+    LogLevel getLogLevel() const;
 
 
 private:
+
+    std::string logLevelToStr(LogLevel) const;
+
     std::ofstream logFile_;
     LogLevel currentLevel_;
 
