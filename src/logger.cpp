@@ -6,7 +6,7 @@
 
 Logger::Logger(const std::string& filename, LogLevel defaultLogLevel): currentLevel_(defaultLogLevel) {
     logFile_.open(filename, std::ios::app);
-    if (!logFile_.is_open()) throw std::runtime_error("Ошибка открытия файла логирования: " + filename);
+    if (!logFile_.is_open()) throw std::runtime_error("Error opening the logging file: " + filename);
 }
 
 Logger::~Logger() {
