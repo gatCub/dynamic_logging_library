@@ -5,6 +5,8 @@ set(CMAKE_CXX_STANDARD 17)
 
 add_library(logging_library SHARED src/logger.cpp)
 
+add_executable(main src/main.cpp)
+
 include(CTest)
 enable_testing()
 
