@@ -62,9 +62,18 @@ private:
     std::atomic<bool> stop_ { false };    
 };
 
-//
+
 void workerThread(ThreadSafeQueue<LogTask>& queue, Logger& logger) {
-    //реализовать логику
+    LogTask task;
+
+    while ( queue.pop(task) ) {
+        try {
+            logger.log(task.message, task.level);
+        }
+        catch (const std::exception& e) {
+            std::cerr << "Logging faild: " << e.what() << std::endl;
+        }
+    }
 }
 
 
