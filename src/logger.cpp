@@ -50,6 +50,18 @@ std::string Logger::logLevelToStr(LogLevel level) const {
     }
 }
 
+LogLevel toLogLevel(int value) {
+    switch (value) {
+        case 0: return LogLevel::Info;
+            break;
+        case 1: return LogLevel::Warning;
+            break;
+        case 2: return LogLevel::Error;
+            break;
+        default: throw std::invalid_argument("Invalid argument. Use 0-2");
+    }
+}
+
 std::string Logger::getCurrentTime() const {
     auto in_time { std::chrono::system_clock::to_time_t(std::chrono::system_clock::now()) };
     
@@ -65,3 +77,5 @@ std::string Logger::getCurrentTime() const {
 
     return ss.str();
 }
+
+
