@@ -11,10 +11,6 @@
 
 #include "logger.h"
 
-#ifdef _WIN32
-    #include <windows.h>
-#endif
-
 void printHelp() {
     //не забыть реализовать
     std::cout << "Implement it later..." << std::endl;
