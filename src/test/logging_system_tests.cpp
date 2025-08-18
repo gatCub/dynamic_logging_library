@@ -139,22 +139,22 @@ int main () {
     cout << "Starting auto logger tests...\n";
 
     test_logger_creation();
-    cout << "[]\tThe \"test_logger_creation\" test was passed successfully\n";
+    cout << "[TEST]\tThe \"test_logger_creation\" test was passed successfully\n";
 
     test_level_filter();
-    cout << "[]\tThe \"test_level_filter\" test was passed successfully\n";
+    cout << "[TEST]\tThe \"test_level_filter\" test was passed successfully\n";
 
     test_level_set();
-    cout << "[]\tThe \"test_level_set\" test was passed successfully\n";
+    cout << "[TEST]\tThe \"test_level_set\" test was passed successfully\n";
 
     test_level_get();
-    cout << "[]\tThe \"test_level_get\" test was passed successfully\n";
+    cout << "[TEST]\tThe \"test_level_get\" test was passed successfully\n";
 
     test_log_format();
-    cout << "[]\tThe \"test_log_format\" test was passed successfully\n";
+    cout << "[TEST]\tThe \"test_log_format\" test was passed successfully\n";
 
     test_safe_multitherad();
-    cout << "[]\tThe \"test_safe_multitherad\" test was passed successfully\n";
+    cout << "[TEST]\tThe \"test_safe_multitherad\" test was passed successfully\n";
 
     cout << "All tests passed!" << std::endl;
     return 0;
