@@ -1,4 +1,4 @@
-# EN dynamic_logging_library
+# EN Dynamic logging library
 ## About the project
 A dynamic library for logging messages with varying levels of importance.
 
