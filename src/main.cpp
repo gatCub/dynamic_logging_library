@@ -73,7 +73,6 @@ void workerThread(ThreadSafeQueue<LogTask>& queue, Logger& logger) {
 }
 
 
-
 int main(int argc, char** argv) {
 
     if ( argc == 2 && argv[1] == "--help" ) {
