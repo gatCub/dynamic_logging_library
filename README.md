@@ -1,6 +1,7 @@
-# EN dynamic_logging_library
-A dynamic library for logging messages with varying levels of importance.
+# EN Dynamic logging library
+## About the project
+A dynamic library for thread-safe logging of messages with varying levels of importance.
 
 # RU Динамическая библиотека логирования
-
-Динамическая библиотека для записи сообщений в журнал с различным уровнем важности.
+## О проекте
+Динамическая библиотека для потокобезопасной записи сообщений в журнал с различным уровнем важности. 
