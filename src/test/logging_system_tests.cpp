@@ -8,7 +8,6 @@
 #include <vector>
 #include <thread>
 
-
 #include "../logger.h"
 
 using namespace std;
@@ -57,7 +56,6 @@ void test_level_filter() {
     filesystem::remove(filename);
 }
 
-
 /*Тест: Проверка корректности изменение уровня логирования*/
 void test_level_set() {
     filesystem::remove(filename);
@@ -89,7 +87,6 @@ void test_level_get() {
 
     filesystem::remove(filename);
 }
-
 
 /*Тест: проверка формата записи логов*/
 void test_log_format() {
@@ -136,6 +133,7 @@ void test_safe_multitherad() {
 
     filesystem::remove(filename);
 }
+
 
 int main () {
     cout << "Starting auto logger tests...\n";
